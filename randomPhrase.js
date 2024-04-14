@@ -21,16 +21,37 @@ const button = document.querySelector('.gerarDica');
 
 button.addEventListener('click', function() {
     console.log("entrou");
-    
+
+    // verificar se a frase ja foi
+
+    const tip =  localStorage.getItem("tip")
+    console.log(tip)
+
+
     function gerarNumeroAleatorio() {
-        return Math.floor(Math.random() * 9) + 1;
+        return Math.floor(Math.random() * 2) + 1;
+    }
+
+    // Verificar se o numero que esta no localstorage e o mesmo numero gerado pela funcao que gera numero aleatorio 
+    let numRandom = gerarNumeroAleatorio();
+    
+    if(tip == numRandom){
+        console.log("tip", tip);
+        console.log("numRandom", numRandom);
+    
+        console.log("se for igual gera numero aleatorio novamente")
+        // se for igual gera numero aleatorio novamente  
+        
+        numRandom = gerarNumeroAleatorio()
+        console.log("numRandom", numRandom);
     }
     
-    console.log(Math.floor(Math.random()* 10));
 
-    const num = gerarNumeroAleatorio()
+    // gravar o numero aleatorio no localStorage
+    localStorage.setItem("tip", numRandom)
 
-    document.getElementById("paragrafo").innerHTML = frases[num];
+
+    document.getElementById("paragrafo").innerHTML = frases[numRandom];
 });
 
 // Fazer funcao para pegar uma frase aleatoriamente
