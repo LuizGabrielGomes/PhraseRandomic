@@ -12,41 +12,35 @@ const frases = [
     "O caminho do valente não segue os passos da estupidez - Código Samurai",
     "Não sei nada sobre como superar os outros. Só conheço a maneira de superar a mim mesmo - Código Samurai",
     "O samurai nasce para morrer. A morte não é uma maldição a evitar, senão o fim natural de toda vida - Código Samurai",
-    "Derrote seu inimigo, mas o deixe ir pensando que venceu. A verdadeira vitória é livre do próprio ego."
+    "Derrote seu inimigo, mas o deixe ir pensando que venceu. A verdadeira vitória é livre do próprio ego.",
+
 ];
 
-console.log(frases);
+const length = frases.length;
 
 const button = document.querySelector('.gerarDica');
 
 button.addEventListener('click', function() {
-    console.log("entrou");
 
     // verificar se a frase ja foi
 
     const tip =  localStorage.getItem("tip")
-    console.log(tip)
-
-
+ 
     function gerarNumeroAleatorio() {
-        return Math.floor(Math.random() * 2) + 1;
+        return Math.floor(Math.random() * length);
     }
 
     // Verificar se o numero que esta no localstorage e o mesmo numero gerado pela funcao que gera numero aleatorio 
     let numRandom = gerarNumeroAleatorio();
     
     if(tip == numRandom){
-        console.log("tip", tip);
-        console.log("numRandom", numRandom);
-    
-        console.log("se for igual gera numero aleatorio novamente")
+      
         // se for igual gera numero aleatorio novamente  
         
         numRandom = gerarNumeroAleatorio()
-        console.log("numRandom", numRandom);
+   
     }
     
-
     // gravar o numero aleatorio no localStorage
     localStorage.setItem("tip", numRandom)
 
